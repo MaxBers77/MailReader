@@ -46,7 +46,9 @@ public class MailReader {
         props.put("mail.host",IMAP_Server);
         props.put("mail.store.protocol","imap");
         props.put("mail.user",IMAP_AUTH_EMAIL);
-        props.put("mail.imap.port",IMAP_Port);
+        if (!IMAP_Port.equals("")) {
+            props.put("mail.imap.port", IMAP_Port);
+        }
         props.put("mail.imap.ssl.enable",mail_imap_ssl_enable);
         //Если протокол задан в файле настроек, зададим его
         if (!Objects.equals(mail_imap_ssl_protocols, "")) {
