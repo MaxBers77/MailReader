@@ -77,9 +77,6 @@ public class TaskScheduler {
         while (true) {
             //Пытаемся прочесть почту и сохранить вложения
 
-            System.out.println("actualDate = "+actualDate);
-            System.out.println("currentActualDate = "+currentActualDate);
-            System.out.println("countOfAttempts = "+countOfAttempts);
             boolean isReading=mailReader.readMail();
 
             //Если все нормально прочлось и распаковалось
@@ -107,7 +104,7 @@ public class TaskScheduler {
             //Если прочесть почту не удалось и количество попыток прочесть почту меньше numberOfAttempts
             if (!isReading && countOfAttempts<nOA){
                 //Время следующей попытки через repeatAfter
-                actualDate=new Date(actualDate.getTime()+TimeUnit.MINUTES.toMillis(rA));
+                actualDate=new Date(actualDate.getTime()+TimeUnit.HOURS.toMillis(rA));
                 countOfAttempts++;
                 waitingForReading();
                 continue;
